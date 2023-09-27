@@ -12,6 +12,20 @@ input_file_name=Entry(fun)
 input_file_name.place(relx=0.46,rely=0.03,anchor=CENTER)
 my_text=Text(fun,height=35,width=80)
 my_text.place(relx=0.5,rely=0.55,anchor=CENTER)
+name=""
+def openfile():
+    global name
+    my_text.delete(1.0,END)
+    input_file_name.delete(0,END)
+    text_file=filedialog.askopenfilename(title="Open text file",filetypes=(("Text files","*txt"),))
+    print(text_file)
+    name=os.path.basename(text_file)
+    formated_name.insert(END,formated_name)
+    fun.title(formated_name)
+    text_file=open(name."r")
+    paragraph=text_file,read()
+    my_text.insert(NED,paragraph)
+    text_file.close()
 open_button=Button(fun,image=open_img,text="Open file",command=openfile)
 open_button.place(relx=0.05,rely=0.03,anchor=CENTER)
-fun.mainloop
+fun.mainloop()
